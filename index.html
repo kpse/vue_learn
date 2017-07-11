@@ -1,15 +1,23 @@
 <html>
-
 <head>
     <script data-require="vue.js@*" data-semver="10.0.26" src="https://cdn.jsdelivr.net/vue/1.0.26/vue.min.js"></script>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css"/>
 </head>
 
 <body>
 <div id="card">
     <header>{{ title }}</header>
     <div v-html="content"></div>
+    <ul>
+        <li v-for="dino in dinos">
+            <h4>{{ dino.text | capitalize }}</h4>
+            <span>The {{ dino.text | undercase }} weighs {{ dino.weight }}.</span>
+            <br>
+            <a href="{{ dino.text | undercase | url}}">{{ dino.text | undercase | url}}</a>
+        </li>
+    </ul>
 </div>
+
 
 <script src="script.js"></script>
 </body>
