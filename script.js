@@ -22,5 +22,19 @@ var card = new Vue({
     capitalize: (value) => value.charAt(0).toUpperCase() + value.slice(1).toLowerCase(),
     undercase: (value) => value.toLowerCase(),
     url: (value) => `https://en.wikipedia.org/wiki/${value}`
+  },
+  methods: {
+    addDino: function() {
+      const input = document.getElementById('dino-form');
+      if(input.value !== '') {
+        this.dinos.push({
+          text: input.value
+        });
+        input.value = '';
+      }
+    },
+    deleteDino: function (index) {
+      this.dinos.splice(index, 1)
+    }
   }
 });
