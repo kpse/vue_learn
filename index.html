@@ -1,6 +1,7 @@
 <html xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <script data-require="vue.js@*" data-semver="10.0.26" src="https://cdn.jsdelivr.net/vue/1.0.26/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
     <link rel="stylesheet" href="style.css"/>
 </head>
 
@@ -14,12 +15,19 @@
     </div>
     <ul>
         <li v-for="dino in dinos">
-            <button v-on:click="deleteDino(index)">X</button>
+            <button v-on:click="dino.quantity += 1">+</button>
+            {{dino.quantity}}
+            <button v-on:click="dino.quantity -= 1">-</button>
             <h4>{{ dino.text | capitalize }}</h4>
+            <button v-on:click="deleteDino">Make Extinct</button>
             <span>The {{ dino.text | undercase }} weighs {{ dino.weight }}.</span>
             <br>
             <a href="{{ dino.text | undercase | url}}">{{ dino.text | undercase | url}}</a>
         </li>
+    </ul>
+    <ul>
+        <li>Total Dinosaurs: {{ totalDinos }} <span>Updated: {{ dinoUpdated }}</span></li>
+        <li>Total Species: {{ totalSpecies }} <span>Updated: {{ speciesUpdated }}</span></li>
     </ul>
 </div>
 

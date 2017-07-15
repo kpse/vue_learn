@@ -2,6 +2,9 @@ body {
     padding: 2em;
     font-family: sans-serif;
 }
+.extinct {
+    float: right;
+}
 
 #card {
     border: 2px solid Gray;
@@ -16,21 +19,30 @@ body {
     color: white;
     font-size: 1.5em;
 }
-
-#card div, #card p {
-    padding:1em;
+#card span {
+    font-size: 0.75em;
+    font-weight: normal;
+    font-style: italic;
+    float: right;
+}
+div, p, form {
+    padding: 1em;
 }
 
-
-#card ul {
+ul {
     list-style: none;
     margin: 0;
-    padding: 0 1em 1em;
+    padding: 1em;
 }
-
-#card ul li {
-    padding: .25em;
+ul li {
+    padding: .5em;
     border: 1px solid gray;
     margin: .5em 0;
     border-radius: 3px;
+}
+
+ul li span {
+    float: right;
+    color: darkred;
+    font-weight: 600;
 }
