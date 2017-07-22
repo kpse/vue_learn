@@ -1,4 +1,4 @@
-<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+<html xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <script data-require="vue.js@*" data-semver="10.0.26" src="https://cdn.jsdelivr.net/vue/1.0.26/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
@@ -10,8 +10,10 @@
     <header>{{ title }}</header>
     <div v-html="content"></div>
     <div>
-        <input id="dino-form" v-on:keypress.enter="addDino">
-        <button v-on:click="addDino">Add Dinosaur</button>
+        <form v-on:submit.prevent="addDino">
+            <input id="itemForm" v-model="input">
+            <button v-bind:disabled="buttonDisabled">{{ buttonText }}</button>
+        </form>
     </div>
     <ul>
         <li v-for="dino in dinos">

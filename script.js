@@ -21,7 +21,9 @@ var card = new Vue({
         weight: "2,500 kg",
         quantity: 3
       }
-    ]
+    ],
+    text: "",
+    buttonText: "Add Dinosaur"
   },
   filters: {
     capitalize: (value) => value.charAt(0).toUpperCase() + value.slice(1).toLowerCase(),
@@ -30,13 +32,12 @@ var card = new Vue({
   },
   methods: {
     addDino: function () {
-      const input = document.getElementById('dino-form');
-      if (input.value !== '') {
+      if (this.input !== '') {
         this.dinos.push({
-          text: input.value,
+          text: this.input,
           quantity: 0
         });
-        input.value = '';
+        this.input = '';
       }
     },
     deleteDino: function (index) {
@@ -51,6 +52,15 @@ var card = new Vue({
     totalSpecies: function () {
       this.speciesUpdated += 1;
       return this.dinos.length;
+    },
+    buttonDisabled: function () {
+      return this.input == '';
     }
+  },
+  watch: {
+    input: _.debounce(function () {
+        this.buttonText = this.input !== '' ? `Add ${this.input}` : `Add Dinosaur`;
+      }
+    , 250)
   }
 });
