@@ -6,7 +6,7 @@
 </head>
 
 <body>
-<div id="card">
+<div id="card" class="card">
     <header>{{ title }}</header>
     <div v-html="content"></div>
     <div>
@@ -30,6 +30,23 @@
     <ul>
         <li>Total Dinosaurs: {{ totalDinos }} <span>Updated: {{ dinoUpdated }}</span></li>
         <li>Total Species: {{ totalSpecies }} <span>Updated: {{ speciesUpdated }}</span></li>
+    </ul>
+</div>
+
+<div id="card2" class="card">
+    <header>{{ title }}</header>
+    <button v-bind:class="[sizeToggle ? 'large' : '', { 'rounded': isRound}]"
+            v-bind:style="styles" v-bind:disabled="disabled">Style tuning
+    </button>
+    <hr>
+    <h4>Options</h4>
+    <ul>
+        <li><input type="checkbox" v-model="sizeToggle"><label>Large</label></li>
+        <li><input type="checkbox" v-model="isRound" id="round"><label for="round">Rounded</label></li>
+        <li><input type="checkbox" v-model="disabled"><label>Disabled</label></li>
+        <li><input type="text" v-model="backgroundColor"><label>Background Color</label></li>
+        <li><input type="text" v-model="fontColor"><label>Font Color</label></li>
+        <li><input type="range" v-model="range" min="15" max="85"><label>Position</label></li>
     </ul>
 </div>
 

@@ -61,6 +61,28 @@ var card = new Vue({
     input: _.debounce(function () {
         this.buttonText = this.input !== '' ? `Add ${this.input}` : `Add Dinosaur`;
       }
-    , 250)
+      , 250)
   }
 });
+
+var card2 = new Vue({
+  el: '#card2',
+  data: {
+    title: 'Style Bindings',
+    isRounding: false,
+    sizeToggle: false,
+    disabled: false,
+    backgroundColor: '#CCCCCC',
+    fontColor: '#000000',
+    range: 50
+  },
+  computed: {
+    styles: function () {
+      return {
+        color: this.fontColor,
+        background: this.backgroundColor,
+        'margin-left': this.range + '%'
+      }
+    }
+  }
+})
