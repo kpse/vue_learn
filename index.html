@@ -18,10 +18,13 @@
     <template v-if="dinos.length > 0"><h4>Dinosaur List</h4>
         <ul>
             <li v-for="dino in dinos">
-                <button v-on:click="dino.quantity += 1">+</button>
-                {{dino.quantity}}
-                <button v-on:click="dino.quantity -= 1">-</button>
-                <h4>{{ dino.text | capitalize }}</h4>
+                <dino-counter v-bind:name="dino.text"
+                v-bind:initial-quantity="dino.quantity"
+                v-on:increment="incrementTotal"></dino-counter>
+                <!--<button v-on:click="dino.quantity += 1">+</button>-->
+                <!--{{dino.quantity}}-->
+                <!--<button v-on:click="dino.quantity -= 1">-</button>-->
+                <!--<h4>{{ dino.text | capitalize }}</h4>-->
                 <button v-on:click="deleteDino">Make Extinct</button>
                 <span>The {{ dino.text | undercase }} weighs {{ dino.weight }}.</span>
                 <br>
@@ -31,10 +34,18 @@
         <ul>
             <li>Total Dinosaurs: {{ totalDinos }} <span>Updated: {{ dinoUpdated }}</span></li>
             <li>Total Species: {{ totalSpecies }} <span>Updated: {{ speciesUpdated }}</span></li>
+            <li>Total 2: {{ total }} by dino-counter</li>
         </ul>
     </template>
     <p v-else>You have no dinosaurs yet</p>
 </div>
+
+<script type="text/x-template" id="dino-counter">
+    <div>
+        <button v-on:click="increment">{{quantity}}</button>
+        {{ name }}
+    </div>
+</script>
 
 <div id="card2" class="card">
     <header>{{ title }}</header>

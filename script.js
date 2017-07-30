@@ -5,6 +5,7 @@ var card = new Vue({
     content: "<strong>Dinosaurs</strong> are a diverse group of animals of the clade <em>Dinosauria</em> that first appeared during the Triassic period.",
     dinoUpdated: 0,
     speciesUpdated: 0,
+    total: 0,
     dinos: [
       {
         text: "Velociraptor",
@@ -42,6 +43,10 @@ var card = new Vue({
     },
     deleteDino: function (index) {
       this.dinos.splice(index, 1)
+    },
+    incrementTotal: function (amount) {
+      console.log('counting', this.total, amount);
+      this.total += amount;
     }
   },
   computed: {
@@ -62,6 +67,24 @@ var card = new Vue({
         this.buttonText = this.input !== '' ? `Add ${this.input}` : `Add Dinosaur`;
       }
       , 250)
+  },
+  components: {
+    'dino-counter': {
+      template: '#dino-counter',
+      props: ['name', 'initialQuantity'],
+      data: function () {
+        this.$emit('increment', this.initialQuantity);
+        return {
+          quantity: this.initialQuantity
+        }
+      },
+      methods: {
+        increment: function () {
+          this.quantity += 1;
+          this.$emit('increment', 1);
+        }
+      }
+    }
   }
 });
 
