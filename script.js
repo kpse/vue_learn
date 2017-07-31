@@ -59,7 +59,7 @@ var card = new Vue({
       return this.dinos.length;
     },
     buttonDisabled: function () {
-      return this.input == '';
+      return this.input === '';
     }
   },
   watch: {
