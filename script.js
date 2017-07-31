@@ -50,10 +50,6 @@ var card = new Vue({
     }
   },
   computed: {
-    totalDinos: function () {
-      this.dinoUpdated += 1;
-      return _.sum(_.map(this.dinos, 'quantity'));
-    },
     totalSpecies: function () {
       this.speciesUpdated += 1;
       return this.dinos.length;
@@ -71,11 +67,12 @@ var card = new Vue({
   components: {
     'dino-counter': {
       template: '#dino-counter',
-      props: ['name', 'initialQuantity'],
+      props: ['name', 'initialq'],
       data: function () {
-        this.$emit('increment', this.initialQuantity);
+        console.log(`data init??`, this.initialq);
+        this.$emit('increment', this.initialq);
         return {
-          quantity: this.initialQuantity
+          quantity: this.initialq
         }
       },
       methods: {
