@@ -26,7 +26,7 @@
                 <!--<button v-on:click="dino.quantity -= 1">-</button>-->
                 <!--<h4>{{ dino.text | capitalize }}</h4>-->
                 <button v-on:click="deleteDino">Make Extinct</button>
-                <span>The {{ dino.text | undercase }} weighs {{ dino.weight }}.</span>
+                <span v-bind:title="message">The {{ dino.text | undercase }} weighs {{ dino.weight }}.</span>
                 <br>
                 <a href="{{ dino.text | undercase | url}}">{{ dino.text | undercase | url}}</a>
             </li>

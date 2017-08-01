@@ -25,6 +25,7 @@ new Vue({
     dinoUpdated: 0,
     speciesUpdated: 0,
     total: 0,
+    message: `The page is rendered at ${new Date}`,
     dinos: [
       {
         text: "Velociraptor",
@@ -85,7 +86,7 @@ new Vue({
   }
 });
 
-var card2 = new Vue({
+new Vue({
   el: '#card2',
   data: {
     title: 'Style Bindings',
