@@ -1,4 +1,23 @@
-var card = new Vue({
+Vue.component('dino-counter', {
+    template: '#dino-counter',
+    props: ['name', 'initialq'],
+    data: function () {
+      console.log(`data init??`, this.initialq);
+      this.$emit('increment', this.initialq);
+      return {
+        quantity: this.initialq
+      }
+    },
+    methods: {
+      increment: function () {
+        this.quantity += 1;
+        this.$emit('increment', 1);
+      }
+    }
+  }
+)
+
+new Vue({
   el: "#card",
   data: {
     title: "Dinosaurs",
@@ -63,25 +82,6 @@ var card = new Vue({
         this.buttonText = this.input !== '' ? `Add ${this.input}` : `Add Dinosaur`;
       }
       , 250)
-  },
-  components: {
-    'dino-counter': {
-      template: '#dino-counter',
-      props: ['name', 'initialq'],
-      data: function () {
-        console.log(`data init??`, this.initialq);
-        this.$emit('increment', this.initialq);
-        return {
-          quantity: this.initialq
-        }
-      },
-      methods: {
-        increment: function () {
-          this.quantity += 1;
-          this.$emit('increment', 1);
-        }
-      }
-    }
   }
 });
 
