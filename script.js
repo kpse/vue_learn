@@ -53,12 +53,12 @@ new Vue({
   },
   methods: {
     addDino: function () {
-      if (this.input !== '') {
+      if (this.dino !== '') {
         this.dinos.push({
-          text: this.input,
-          quantity: 0
+          text: this.dino,
+          quantity: 1
         });
-        this.input = '';
+        this.dino = '';
       }
     },
     deleteDino: function (index) {
@@ -75,12 +75,12 @@ new Vue({
       return this.dinos.length;
     },
     buttonDisabled: function () {
-      return this.input === '';
+      return this.dino === '';
     }
   },
   watch: {
-    input: _.debounce(function () {
-        this.buttonText = this.input !== '' ? `Add ${this.input}` : `Add Dinosaur`;
+    dino: _.debounce(function () {
+        this.buttonText = this.dino !== '' ? `Add ${this.dino}` : `Add Dinosaur`;
       }
       , 250)
   }
