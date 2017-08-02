@@ -19,7 +19,7 @@
         <ul>
             <li v-for="d in dinos">
                 <dino-counter v-bind:name="d.text"
-                v-bind:initialq="d.quantity"
+                v-bind:initial-quantity="d.quantity"
                               @increment="incrementTotal"></dino-counter>
                 <!--<button v-on:click="dino.quantity += 1">+</button>-->
                 <!--{{dino.quantity}}-->

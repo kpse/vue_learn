@@ -1,11 +1,10 @@
 Vue.component('dino-counter', {
     template: '#dino-counter',
-    props: ['name', 'initialq'],
+    props: ['name', 'initialQuantity'],
     data: function () {
-      console.log(`data init??`, this.initialq);
-      this.$emit('increment', this.initialq);
+      this.$emit('increment', this.initialQuantity);
       return {
-        quantity: this.initialq
+        quantity: this.initialQuantity
       }
     },
     methods: {
@@ -13,9 +12,11 @@ Vue.component('dino-counter', {
         this.quantity += 1;
         this.$emit('increment', 1);
       }
-    }
+    },
+  filters: {
+    capitalize: (value) => value.charAt(0).toUpperCase() + value.slice(1).toLowerCase()
   }
-)
+});
 
 new Vue({
   el: "#card",
@@ -65,7 +66,6 @@ new Vue({
       this.dinos.splice(index, 1)
     },
     incrementTotal: function (amount) {
-      console.log('counting', this.total, amount);
       this.total += amount;
     }
   },
@@ -108,5 +108,8 @@ new Vue({
   },
   created: function () {
     console.log(`vm is created, the title is ${this.title}`);
+  },
+  beforeCreate: function () {
+    console.log(`before my Vue instance created, what can I do here?`);
   }
 })
