@@ -105,5 +105,8 @@ new Vue({
         'margin-left': this.range + '%'
       }
     }
+  },
+  created: function () {
+    console.log(`vm is created, the title is ${this.title}`);
   }
 })
