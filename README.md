@@ -3,3 +3,4 @@
 
 ### TODO:
 - unit tests
+- fix warning message of Vue 2.x
