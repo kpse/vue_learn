@@ -7,7 +7,7 @@
 
 <body>
 <div id="card" class="card">
-    <header>{{ title }}</header>
+    <header>{{ title }} <span v-on:click="toggle"> {{ editLabel }}</span></header>
     <div v-html="content"></div>
     <div>
         <form v-on:submit.prevent="addDino">
@@ -18,9 +18,11 @@
     <template v-if="dinos.length > 0"><h4>Dinosaur List</h4>
         <ul>
             <li v-for="d in dinos">
-                <dino-counter v-bind:name="d.text"
-                v-bind:initial-quantity="d.quantity"
-                              @increment="incrementTotal"></dino-counter>
+                <component v-bind:is="currentView"
+                           v-bind:name="d.text"
+                              v-bind:initial-quantity="d.quantity"
+                              v-bind:diet="d.diet"
+                              @increment="incrementTotal"></component>
                 <!--<button v-on:click="dino.quantity += 1">+</button>-->
                 <!--{{dino.quantity}}-->
                 <!--<button v-on:click="dino.quantity -= 1">-</button>-->
@@ -43,6 +45,11 @@
     <div>
         <button v-on:click="increment">{{quantity}}</button>
         {{ name | capitalize }}
+    </div>
+</script>
+<script type="text/x-template" id="dino-show">
+    <div>
+        <strong>{{ name }}</strong> | {{ diet }}
     </div>
 </script>
 

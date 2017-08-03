@@ -1,21 +1,26 @@
-Vue.component('dino-counter', {
-    template: '#dino-counter',
-    props: ['name', 'initialQuantity'],
-    data: function () {
-      this.$emit('increment', this.initialQuantity);
-      return {
-        quantity: this.initialQuantity
-      }
-    },
-    methods: {
-      increment: function () {
-        this.quantity += 1;
-        this.$emit('increment', 1);
-      }
-    },
+const dinoEdit = Vue.component('dino-counter', {
+  template: '#dino-counter',
+  props: ['name', 'initialQuantity'],
+  data: function () {
+    this.$emit('increment', this.initialQuantity);
+    return {
+      quantity: this.initialQuantity
+    }
+  },
+  methods: {
+    increment: function () {
+      this.quantity += 1;
+      this.$emit('increment', 1);
+    }
+  },
   filters: {
     capitalize: (value) => value.charAt(0).toUpperCase() + value.slice(1).toLowerCase()
   }
+});
+
+const dinoShow = Vue.component('dino-show', {
+  template: '#dino-show',
+  props: ['name', 'diet']
 });
 
 new Vue({
@@ -31,21 +36,25 @@ new Vue({
       {
         text: "Velociraptor",
         weight: "15 kg",
-        quantity: 10
+        quantity: 10,
+        diet: 'Carnivore'
       },
       {
         text: "triceratops",
         weight: "6,000 kg",
-        quantity: 8
+        quantity: 8,
+        diet: 'Herbivore'
       },
       {
         text: "Stegosaurus",
         weight: "2,500 kg",
-        quantity: 3
+        quantity: 3,
+        diet: 'Herbivore'
       }
     ],
     text: "",
-    buttonText: "Add Dinosaur"
+    buttonText: "Add Dinosaur",
+    currentView: 'dino-counter'
   },
   filters: {
     capitalize: (value) => value.charAt(0).toUpperCase() + value.slice(1).toLowerCase(),
@@ -67,6 +76,9 @@ new Vue({
     },
     incrementTotal: function (amount) {
       this.total += amount;
+    },
+    toggle: function () {
+      this.currentView = this.currentView === 'dino-counter' ? 'dino-show' : 'dino-counter'
     }
   },
   computed: {
@@ -76,6 +88,9 @@ new Vue({
     },
     buttonDisabled: function () {
       return this.dino === '';
+    },
+    editLabel: function () {
+      return this.currentView === 'dino-counter' ? 'Show' : 'Edit'
     }
   },
   watch: {
@@ -83,6 +98,10 @@ new Vue({
         this.buttonText = this.dino !== '' ? `Add ${this.dino}` : `Add Dinosaur`;
       }
       , 250)
+  },
+  components: {
+    'dino-counter': dinoEdit,
+    'dino-show': dinoShow,
   }
 });
 
