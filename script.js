@@ -54,7 +54,8 @@ new Vue({
     ],
     text: "",
     buttonText: "Add Dinosaur",
-    currentView: 'dino-counter'
+    currentView: 'dino-counter',
+    dino: ''
   },
   filters: {
     capitalize: (value) => value.charAt(0).toUpperCase() + value.slice(1).toLowerCase(),

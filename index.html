@@ -18,11 +18,13 @@
     <template v-if="dinos.length > 0"><h4>Dinosaur List</h4>
         <ul>
             <li v-for="d in dinos">
+                <keep-alive>
                 <component v-bind:is="currentView"
                            v-bind:name="d.text"
                               v-bind:initial-quantity="d.quantity"
                               v-bind:diet="d.diet"
                               @increment="incrementTotal"></component>
+                </keep-alive>
                 <!--<button v-on:click="dino.quantity += 1">+</button>-->
                 <!--{{dino.quantity}}-->
                 <!--<button v-on:click="dino.quantity -= 1">-</button>-->
