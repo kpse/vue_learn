@@ -1,5 +1,5 @@
 module.exports = {
-  entry: './script.js',
+  entry: './app.js',
   devServer: {
     contentBase: '.'
   },

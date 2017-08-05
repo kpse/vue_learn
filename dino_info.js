@@ -1,7 +1,7 @@
 import dinoEdit from './dino_edit'
 import dinoShow from './dino_show'
 
-new Vue({
+export default new Vue({
   el: "#card",
   data: {
     title: "Dinosaurs",
@@ -82,33 +82,5 @@ new Vue({
   components: {
     'dino-counter': dinoEdit,
     'dino-show': dinoShow,
-  }
-});
-
-new Vue({
-  el: '#card2',
-  data: {
-    title: 'Style Bindings',
-    isRounding: false,
-    sizeToggle: false,
-    disabled: false,
-    backgroundColor: '#CCCCCC',
-    fontColor: '#000000',
-    range: 50
-  },
-  computed: {
-    styles: function () {
-      return {
-        color: this.fontColor,
-        background: this.backgroundColor,
-        'margin-left': this.range + '%'
-      }
-    }
-  },
-  created: function () {
-    console.log(`vm is created, the title is ${this.title}`);
-  },
-  beforeCreate: function () {
-    console.log(`before my Vue instance created, what can I do here?`);
   }
 })

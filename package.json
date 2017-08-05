@@ -2,7 +2,7 @@
   "name": "vue_first",
   "version": "1.0.0",
   "description": "- https://egghead.io/lessons/vue-build-reusable-vue-js-components",
-  "main": "dino_edit.js",
+  "main": "app.js",
   "scripts": {
     "watch": "webpack --progress --watch",
     "start": "webpack-dev-server --open",
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/kpse/vue_learn#readme",
   "devDependencies": {
+    "file-loader": "^0.11.2",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.6.1"
   }
