@@ -17,7 +17,7 @@
     </div>
     <template v-if="dinos.length > 0"><h4>Dinosaur List</h4>
         <ul>
-            <li v-for="d in dinos">
+            <li v-for="(d, i) in dinos">
                 <keep-alive>
                 <component v-bind:is="currentView"
                            v-bind:name="d.text"
@@ -29,7 +29,7 @@
                 <!--{{dino.quantity}}-->
                 <!--<button v-on:click="dino.quantity -= 1">-</button>-->
                 <!--<h4>{{ dino.text | capitalize }}</h4>-->
-                <button v-on:click="deleteDino">Make Extinct</button>
+                <button v-on:click="deleteDino(i)">Make Extinct</button>
                 <span v-bind:title="message">The {{ d.text | undercase }} weighs {{ d.weight }}.</span>
                 <br>
                 <a href="{{ d.text | undercase | url}}">{{ d.text | undercase | url}}</a>

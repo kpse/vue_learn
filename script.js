@@ -51,7 +51,8 @@ new Vue({
       }
     },
     deleteDino: function (index) {
-      this.dinos.splice(index, 1)
+      this.total -= this.dinos[index].quantity;
+      this.dinos.splice(index, 1);
     },
     incrementTotal: function (amount) {
       this.total += amount;
