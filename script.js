@@ -1,27 +1,5 @@
-const dinoEdit = Vue.component('dino-counter', {
-  template: '#dino-counter',
-  props: ['name', 'initialQuantity'],
-  data: function () {
-    this.$emit('increment', this.initialQuantity);
-    return {
-      quantity: this.initialQuantity
-    }
-  },
-  methods: {
-    increment: function () {
-      this.quantity += 1;
-      this.$emit('increment', 1);
-    }
-  },
-  filters: {
-    capitalize: (value) => value.charAt(0).toUpperCase() + value.slice(1).toLowerCase()
-  }
-});
-
-const dinoShow = Vue.component('dino-show', {
-  template: '#dino-show',
-  props: ['name', 'diet']
-});
+import dinoEdit from './dino_edit'
+import dinoShow from './dino_show'
 
 new Vue({
   el: "#card",

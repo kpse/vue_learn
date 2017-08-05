@@ -1,0 +1,26 @@
+{
+  "name": "vue_first",
+  "version": "1.0.0",
+  "description": "- https://egghead.io/lessons/vue-build-reusable-vue-js-components",
+  "main": "dino_edit.js",
+  "scripts": {
+    "watch": "webpack --progress --watch",
+    "start": "webpack-dev-server --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kpse/vue_learn.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kpse/vue_learn/issues"
+  },
+  "homepage": "https://github.com/kpse/vue_learn#readme",
+  "devDependencies": {
+    "webpack": "^3.4.1",
+    "webpack-dev-server": "^2.6.1"
+  }
+}
